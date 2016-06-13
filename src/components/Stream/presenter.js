@@ -1,7 +1,5 @@
 import React from 'react';
 
-/* Stream Component */
-
 function Stream ({ tracks = [] }) {
 	return (
 		<div className='tracks--list'>
@@ -14,4 +12,4 @@ function Stream ({ tracks = [] }) {
 	)
 }
 
-export default Stream;
+export default Stream
