@@ -20,5 +20,5 @@ Object.keys(window).forEach((key) => {
 	}
 });
 
-global.React = react;
+global.React = React;
 global.expect = expect;
