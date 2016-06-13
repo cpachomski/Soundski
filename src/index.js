@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Stream from './components/Stream';
+import configureStore from './stores/configureStore';
+import * as actions from './actions';
 
+import Stream from './components/Stream/Stream';
+
+//dummy data
 const tracks = [
 	{
 		title: 'Track 1'
@@ -12,5 +16,8 @@ const tracks = [
 	}
 ];
 
+const store = configureStore();
+store.dispatch(actions.setTracks(tracks));
 
-ReactDOM.render(<Stream tracks={tracks}/>, document.getElementById('root'))
+
+ReactDOM.render(<Stream/>, document.getElementById('root'))
