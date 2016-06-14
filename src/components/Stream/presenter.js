@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Arrow from 'react-icons/lib/md/play-arrow';
 import Pause from 'react-icons/lib/md/pause';
+import { MorphReplace } from 'react-svg-morph';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
 
 class Stream extends React.Component {
+
+	componentDidMount() {
+		this.playing = false;
+	}
+
 	componentDidUpdate() {
 		const audioElement = ReactDOM.findDOMNode(this.refs.audio);
 		if(!audioElement) { return; }
@@ -20,6 +26,8 @@ class Stream extends React.Component {
 
 	render() {
 		const { user, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+
+
 
 		return (
 				<div className='stream'>
@@ -37,7 +45,7 @@ class Stream extends React.Component {
 											return (
 												<div className='track' key={i}>
 													{track.origin.title}
-													<button className='btn play' type='button' onClick={() => onPlay(track)}></button>
+													<button className='btn play' type='button' onClick={() => onPlay(track)}>Play</button>
 												</div>
 											)
 										})
