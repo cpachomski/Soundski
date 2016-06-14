@@ -23,7 +23,7 @@ $light-red: #B85348;
     border-bottom: 10px solid #000;
     .username{
       padding: 0px 0px 15px 0px;
-      color: $dark-red;
+      color: #FFF;
       margin: 0px;
       font-size: 35px;
     }
@@ -31,8 +31,9 @@ $light-red: #B85348;
       letter-spacing: 2px;
       &:first-of-type {
         padding-left: 1px;
+        color: $light-red;
       }
-      color: #999;
+      color: $dark-red;
     }
   }
 

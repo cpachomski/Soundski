@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Arrow from 'react-icons/lib/md/play-arrow';
+import Pause from 'react-icons/lib/md/pause';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
 
