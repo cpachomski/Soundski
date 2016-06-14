@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classNames from 'classnames';
 import Arrow from 'react-icons/lib/md/play-arrow';
 import Pause from 'react-icons/lib/md/pause';
 import { MorphReplace } from 'react-svg-morph';
@@ -23,20 +24,16 @@ class Stream extends React.Component {
 			audoElement.pause();
 		}
 
-
 	}
 
 	render() {
 		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay } = this.props;
-		let loginClass = 'login';
 
-		if (loginInProgress) {
-			loginClass = 'login active';
-		} 
-		if (loginSuccess) {
-			loginClass = 'login logged-in';
-		}
-
+		const loginClass = classNames({
+			'login': true,
+			'login active': loginInProgress,
+			'login complete': loginSuccess
+		})
 
 		const streamClass = loginSuccess ? 'stream logged-in': 'stream';
 
@@ -44,7 +41,7 @@ class Stream extends React.Component {
 			<div className='stream-presenter'>
 				{ !user ?
 
-					<div className={loginClass}>
+					<div className={loginClass} ref='login'>
 						<h1>Soundcloud Player</h1>
 						<button className='btn' onClick={onAuth}>Login</button>
 					</div> :
