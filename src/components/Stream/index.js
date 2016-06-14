@@ -7,8 +7,10 @@ import Stream from './presenter';
 //STREAM CONTAINER
 
 function mapStateToProps(state) {
+  const { user } = state.auth;
 	const tracks = state.track;
 	return {
+    user,
 		tracks
 	}
 };

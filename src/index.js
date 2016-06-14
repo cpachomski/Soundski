@@ -13,19 +13,9 @@ import App from './components/App';
 import Callback from './components/Callback';
 import Stream from './components/Stream';
 
-//dummy data
-const tracks = [
-	{
-		title: 'Track 1'
-	}, 
-	{
-		title: 'Track 2'
-	}
-];
+
 
 const store = configureStore();
-store.dispatch(actions.setTracks(tracks));
-
 const history = syncHistoryWithStore(browserHistory, store);
 
 
