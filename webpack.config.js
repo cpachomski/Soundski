@@ -26,9 +26,9 @@ module.exports = {
     'hot': true,
     historyApiFallback: true
   },
-  plugins: {
+  plugins: [
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
-  }
+  ]
 };
