@@ -9,8 +9,8 @@ export default function(state = initialState, action) {
 	switch (action.type) {
 		case actionTypes.TRACKS_SET:
 			return setTracks(state, action);
-    case actionTypes.TRACK_PLAY:
-      return playTrack(state, action);
+	    case actionTypes.TRACK_PLAY:
+	      return playTrack(state, action);
 	}
 	return state;
 }

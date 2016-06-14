@@ -25,49 +25,55 @@ class Stream extends React.Component {
 	}
 
 	render() {
-		const { user, tracks = [], activeTrack, onAuth, onPlay } = this.props;
-
-
+		const { user, loginInProgress, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+		const loginClass = loginInProgress ? 'login active' : 'login';
 
 		return (
-				<div className='stream'>
-						{
-							user ?
-							<div className='left-col'>
-								<div className='user'>
-									<h2 className='username'> { user.username }</h2>
-									<span className='city'>{ user.city }</span> |
-									<span className='country'> { user.country }</span>
+			<div className='stream-presenter'>
+				{ !user ?
+
+					<div className={loginClass}>
+						<h1>Soundcloud Player</h1>
+						<button className='btn' onClick={onAuth}>Login</button>
+					</div> :
+					<div className='stream'>
+						<div className='left-col'>
+							<div className='user'>
+								<h2 className='username'> { user.username }</h2>
+								<span className='city'>{ user.city }</span> |
+								<span className='country'> { user.country }</span>
+							</div>
+							<div className='tracks'>
+								{
+									tracks.map((track, i) => {
+										return (
+											<div className='track' key={i}>
+												{track.origin.title}
+												<button className='btn play' type='button' onClick={() => onPlay(track)}>Play</button>
+											</div>
+										)
+									})
+								}
+							</div>
+						</div>
+						<div className='right-col'>
+							{
+								activeTrack ?
+
+								<div>
+									<h4>Playing -> { activeTrack.origin.title } </h4>
+									<audio id='audio' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
 								</div>
-								<div className='tracks'>
-									{
-										tracks.map((track, i) => {
-											return (
-												<div className='track' key={i}>
-													{track.origin.title}
-													<button className='btn play' type='button' onClick={() => onPlay(track)}>Play</button>
-												</div>
-											)
-										})
-									}
-								</div>
-							</div>:
-								<div className='login'>
-									<h1>Soundcloud Player</h1>
-									<button className='btn' onClick={onAuth}>Login</button>
-								</div>
-						}
-					<div className='right-col'>
-						{
-							activeTrack ?
-							<div>
-								<h4>Playing -> { activeTrack.origin.title } </h4>
-								<audio id='audio' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
-							</div>:
-							null
-						}
+
+								:
+
+								null
+							}
+						</div>
+
 					</div>
-				</div>
+				}
+			</div>
 		)
 	}
 }

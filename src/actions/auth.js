@@ -10,26 +10,39 @@ function setMe(user) {
   }
 }
 
+function startLogin() {
+  return {
+    type: actionTypes.LOGIN_START
+  }
+}
+
+function endLogin() {
+  return {
+    type: actionTypes.LOGIN_END
+  }
+}
+
+
 function fetchStream(me, session) {
   return function(dispatch) {
     fetch(`//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
-      .then((data) => {
-          console.log(data);
+      .then((data) => {   
         dispatch(setTracks(data.collection));
-      } )
+      });
   }
 }
 
 
 export function auth() {
   return function(dispatch){
-  	SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
-
+    dispatch(startLogin());
+    SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
   	SC.connect().then((session) => {
   		fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
   			.then((response) => response.json())
   			.then((me) => {
+          dispatch(endLogin());
           dispatch(setMe(me));
           dispatch(fetchStream(me, session))
   			});
