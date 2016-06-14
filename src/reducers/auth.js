@@ -12,15 +12,15 @@ function setMe(state, action) {
   return { ...state, user };
 }''
 
-function startLogin(state) {
+function setLoginStart(state) {
 	return { ...state, loginInProgress: true }
 };
 
-function endLogin(state) {
+function setLoginEnd(state) {
 	return { ...state, loginInProgress: false }
 };
 
-function loginSuccess(state) {
+function setLoginSuccess(state) {
 	return { ...state, loginSuccess: true }
 };
 
@@ -29,11 +29,11 @@ export default function( state = initialState, action) {
     case actionTypes.ME_SET:
       return setMe(state, action);
     case actionTypes.LOGIN_START:
-    	return startLogin(state);
+    	return setLoginStart(state);
     case actionTypes.LOGIN_END:
-    	return endLogin(state);
+    	return setLoginEnd(state);
     case actionTypes.LOGIN_SUCCESS:
-    	return loginSuccess(state);
+    	return setLoginSuccess(state);
   }
   return state;
 };

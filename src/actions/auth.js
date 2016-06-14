@@ -10,19 +10,19 @@ function setMe(user) {
   }
 }
 
-function startLogin() {
+function setLoginStart() {
   return {
     type: actionTypes.LOGIN_START
   }
 }
 
-function endLogin() {
+function setLoginEnd() {
   return {
     type: actionTypes.LOGIN_END
   }
 }
 
-function loginSuccess() {
+function setLoginSuccess() {
   return {
     type: actionTypes.LOGIN_SUCCESS
   }
@@ -42,11 +42,11 @@ function fetchStream(me, session) {
 
 export function auth() {
   return function(dispatch){
-    dispatch(startLogin());
+    dispatch(setLoginStart());
     SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
   	SC.connect().then((session) => {
-      dispatch(endLogin());
-      dispatch(loginSuccess());
+      dispatch(setLoginEnd());
+      dispatch(setLoginSuccess());
       fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
         .then((response) => response.json())
         .then((me) => {
