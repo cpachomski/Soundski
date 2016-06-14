@@ -22,11 +22,23 @@ class Stream extends React.Component {
 		} else {
 			audoElement.pause();
 		}
+
+
 	}
 
 	render() {
-		const { user, loginInProgress, tracks = [], activeTrack, onAuth, onPlay } = this.props;
-		const loginClass = loginInProgress ? 'login active' : 'login';
+		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+		let loginClass = 'login';
+
+		if (loginInProgress) {
+			loginClass = 'login active';
+		} 
+		if (loginSuccess) {
+			loginClass = 'login logged-in';
+		}
+
+
+		const streamClass = loginSuccess ? 'stream logged-in': 'stream';
 
 		return (
 			<div className='stream-presenter'>

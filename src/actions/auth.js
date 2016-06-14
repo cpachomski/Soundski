@@ -22,6 +22,12 @@ function endLogin() {
   }
 }
 
+function loginSuccess() {
+  return {
+    type: actionTypes.LOGIN_SUCCESS
+  }
+}
+
 
 function fetchStream(me, session) {
   return function(dispatch) {
@@ -39,12 +45,15 @@ export function auth() {
     dispatch(startLogin());
     SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
   	SC.connect().then((session) => {
-  		fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
-  			.then((response) => response.json())
-  			.then((me) => {
-          dispatch(endLogin());
-          dispatch(setMe(me));
-          dispatch(fetchStream(me, session))
+      dispatch(endLogin());
+      dispatch(loginSuccess());
+      fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
+        .then((response) => response.json())
+        .then((me) => {
+          setTimeout(() => {
+            dispatch(setMe(me));
+            dispatch(fetchStream(me, session))
+          }, 1000);
   			});
   	});
   };

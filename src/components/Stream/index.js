@@ -7,11 +7,12 @@ import Stream from './presenter';
 //STREAM CONTAINER
 
 function mapStateToProps(state) {
-  const { user, loginInProgress } = state.auth;
+  const { user, loginInProgress, loginSuccess } = state.auth;
 	const { tracks, activeTrack } = state.track;
 	return {
     	user,
     	loginInProgress,
+    	loginSuccess,
 		tracks,
     	activeTrack
 	}

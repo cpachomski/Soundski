@@ -2,25 +2,38 @@ $dark-red: #AA4439;
 $light-red: #B85348;
 
 .login {
-  width: 100%;
-
   &.active {
     .btn {
       width: 100%;
     }
   }
+
+  &.logged-in {
+    h1 {
+      margin: 0px;
+      height: 0px;
+    }
+    .btn {
+      color: #FFF !important;
+      height: 100% !important;
+      margin: 0px;
+    }
+  }
+
   h1 {
     text-transform: uppercase;
-    font-size: 5vw;
+    font-size: 45px;
     color: #FFF;
     text-align: center;
-    margin-top: 350px;
+    padding: 350px 0px;
+    margin: 0px;
+    transition: all 0.4s ease-in;
+    transition-delay: 0.4s;
   }
   .btn {
     height: 50px;
     width: 250px;
-    margin-top: 200px;
-    font-size: 2vw;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     background-color: #FFF;
@@ -30,7 +43,7 @@ $light-red: #B85348;
     top: 50%;
     color: $light-red;
     transform: translate(-50%,-50%);
-    transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
+    transition: all 0.4s cubic-bezier(.87,.21,.97,.55);
     z-index: 1;
 
     &:hover,  &:focus, &:active  {
@@ -40,3 +53,7 @@ $light-red: #B85348;
     }
   }
 }
+
+
+
+
