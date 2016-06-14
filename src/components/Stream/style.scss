@@ -1,7 +1,14 @@
 $dark-red: #AA4439;
 $light-red: #B85348;
+$soundcloud: rgba(255, 58, 0, 1);
+$soundcloud-opaque: rgba(255, 58, 0, 0.7);
 
 .login {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  height: 100%;
+  background: linear-gradient($soundcloud-opaque, $soundcloud);
   &.active {
     .btn {
       width: 100%;
