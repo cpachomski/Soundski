@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CLIENT_ID } from '../../constants/auth';
-
-
-
-
+import './style.scss';
 
 class Stream extends React.Component {
 	componentDidUpdate() {
@@ -23,32 +20,40 @@ class Stream extends React.Component {
 		const { user, tracks = [], activeTrack, onAuth, onPlay } = this.props;
 
 		return (
-				<div>
-					<div>
+				<div className='stream'>
 						{
 							user ?
-								<div className='username'> { user.username } </div> :
-								<button className='btn login' onClick={onAuth}>Login</button>
+							<div className='left-col'>
+								<div className='user'>
+									<h2 className='username'> { user.username }</h2>
+									<span className='city'>{ user.city }</span> |
+									<span className='country'> { user.country }</span>
+								</div>
+								<div className='tracks'>
+									{
+										tracks.map((track, i) => {
+											return (
+												<div className='track' key={i}>
+													{track.origin.title}
+													<button className='btn play' type='button' onClick={() => onPlay(track)}></button>
+												</div>
+											)
+										})
+									}
+								</div>
+							</div>:
+								<div className='login'>
+									<h1>Soundcloud Player</h1>
+									<button className='btn' onClick={onAuth}>Login</button>
+								</div>
 						}
-					</div>
-					<br/>
-					<div>
-						{
-							tracks.map((track, i) => {
-								return (
-									<div className='track' key={i}>
-										{track.origin.title}
-										<button className='btn play' type='button' onClick={() => onPlay(track)}>Play</button>
-									</div>
-								)
-							})
-						}
-					</div>
-					<br/>
-					<div>
+					<div className='right-col'>
 						{
 							activeTrack ?
-							<audio id='audio' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio> :
+							<div>
+								<h4>Playing -> { activeTrack.origin.title } </h4>
+								<audio id='audio' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
+							</div>:
 							null
 						}
 					</div>

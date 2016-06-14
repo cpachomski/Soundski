@@ -1,0 +1,85 @@
+$dark-red: #AA4439;
+$light-red: #B85348;
+
+.stream {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .left-col {
+    max-width: 375px;
+    background-color: #FFF;
+  }
+
+  .right-col {
+    background-color: white;
+    width: calc(100% - 350px);
+  }
+
+  .user {
+    background-color: #333;
+    position: fixed;
+    width: 300px;
+    padding: 50px 50px 50px 25px;
+    border-bottom: 10px solid #000;
+    .username{
+      padding: 0px 0px 15px 0px;
+      color: $dark-red;
+      margin: 0px;
+      font-size: 35px;
+    }
+    span {
+      letter-spacing: 2px;
+      &:first-of-type {
+        padding-left: 1px;
+      }
+      color: #999;
+    }
+  }
+
+  .tracks {
+    margin-top: 185px;
+    .track {
+      border-bottom: 1px solid black;
+      overflow: scroll;
+      padding: 25px 0px 25px 25px;
+      color: $dark-red;
+      font-weight: bold;
+      font-size: 20px;
+
+    }
+  }
+
+  .login {
+    width: 100%;
+    h1 {
+      text-transform: uppercase;
+      font-size: 5vw;
+      color: #FFF;
+      text-align: center;
+      margin-top: 350px;
+    }
+    .btn {
+      height: 50px;
+      width: 250px;
+      margin-top: 200px;
+      font-size: 1.4vw;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #FFF;
+      border: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: $light-red;
+      transform: translate(-50%,-50%);
+      transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
+      z-index: 1;
+
+      &:hover,  &:focus, &:active  {
+        cursor: pointer;
+        height: 50px;
+        width: 100%;
+      }
+    }
+  }
+}
