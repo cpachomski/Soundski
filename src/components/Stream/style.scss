@@ -1,7 +1,7 @@
 $dark-red: #AA4439;
 $light-red: #B85348;
 $soundcloud: rgba(255, 58, 0, 0.9);
-$soundcloud-opaque: rgba(255, 58, 0, 0.6);
+$soundcloud-opaque: rgba(255, 58, 0, 0.7);
 $athini: 'Athiti', sans-serif;
 $spacemono: 'Space Mono', monospace;
 $bungee: 'Bungee Hairline', sans-serif;
@@ -36,12 +36,16 @@ $bungee: 'Bungee Hairline', sans-serif;
   }
 
   h1 {
+    position: absolute;
     text-transform: uppercase;
     font-size: 45px;
     letter-spacing: 3px;
     color: #FFF;
     text-align: center;
     padding: 350px 0px;
+    left: 50%;
+    top: 25%;
+    transform:translate(-50%,-50%);
     margin: 0px;
     transition: all 0.4s ease-in;
     transition-delay: 0.4s;
@@ -60,7 +64,7 @@ $bungee: 'Bungee Hairline', sans-serif;
     letter-spacing: 3px;
     color: $soundcloud;
     transform: translate(-50%,-50%);
-    transition: all 0.4s cubic-bezier(.87,.21,.97,.55);
+    transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
     z-index: 1;
 
     &:hover,  &:focus, &:active  {
