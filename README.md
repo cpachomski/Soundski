@@ -10,4 +10,4 @@
 *	Moment
 
 
-![Alt text](/imgs/loginv2.png "Soundski Login v1")
+![Alt text](/imgs/loginv1.png "Soundski Login v1")
