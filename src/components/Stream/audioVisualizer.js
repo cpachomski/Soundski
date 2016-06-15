@@ -3,7 +3,7 @@ import d3 from 'd3';
 
 class AudioVisualizer {
 
-  constructor(el, p) {
+  constructor(el) {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
     this.el = el;
     this.p = p;

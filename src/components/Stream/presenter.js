@@ -18,14 +18,14 @@ class Stream extends React.Component {
 
 	componentDidUpdate() {
 		const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-		if(!audioElement) { return; }
 
-		const { activeTrack } = this.props;
-		if ( activeTrack ) {
-			audioElement.play();
-			this.visuals = new AudioVisualizer(audioElement, document.getElementById('viz-container'));
-		} else {
-			audioElement.pause();
+		if (audioElement) {
+			const { activeTrack } = this.props;
+			if ( activeTrack ) {
+				audioElement.play();
+			} else {
+				audioElement.pause();
+			}
 		}
 
 	}
@@ -79,7 +79,7 @@ class Stream extends React.Component {
 								}
 							</div>
 						</div>
-						<div className='right-col'>
+						<div className='active-track'>
 							{
 								activeTrack ?
 
@@ -89,12 +89,7 @@ class Stream extends React.Component {
 								</div>
 
 								:
-
-								<div>
-									<BadMood/>
-									{ window.cancelAnimationFrame(window.animation) }
-									<h4>Nothing is playing...</h4>
-								</div>
+								null
 							}
 						</div>
 

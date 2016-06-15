@@ -5,6 +5,25 @@
  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
  */
 
+$dark-red: #AA4439;
+$light-red: #B85348;
+$soundcloud: rgba(255, 58, 0, 0.9);
+$soundcloud-opaque: rgba(255, 58, 0, 0.7);
+$athini: 'Athiti', sans-serif;
+$spacemono: 'Space Mono', monospace;
+$bungee: 'Bungee Hairline', sans-serif;
+
+
+body > div {
+  display: flex;
+}
+
+#visualizer {
+  width: calc(100% - 410px);
+  background: linear-gradient($soundcloud-opaque, $soundcloud);
+}
+
+
 html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */

@@ -92,6 +92,10 @@ $bungee: 'Bungee Hairline', sans-serif;
   border-bottom: 10px solid #333;
 }
 
+.active-track {
+  position: fixed;
+}
+
 .user {
   position: fixed;
   width: calc(400px - 50px);
