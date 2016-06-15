@@ -6,6 +6,12 @@ $athini: 'Athiti', sans-serif;
 $spacemono: 'Space Mono', monospace;
 $bungee: 'Bungee Hairline', sans-serif;
 
+* {
+  &:hover, &:active, &:focus, &:visited {
+    outline: none;
+  }
+}
+
 .login {
   position: absolute;
   width: 100%;

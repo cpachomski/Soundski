@@ -5,7 +5,7 @@ import moment from 'moment';
 import Arrow from 'react-icons/lib/md/play-arrow';
 import Pause from 'react-icons/lib/md/pause';
 import BadMood from 'react-icons/lib/md/mood-bad';
-import { MorphReplace } from 'react-svg-morph';
+import AudioVisualizer from './audioVisualizer';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
 
@@ -13,6 +13,7 @@ class Stream extends React.Component {
 
 	componentDidMount() {
 		this.playing = false;
+		window.animation = null;
 	}
 
 	componentDidUpdate() {
@@ -22,8 +23,9 @@ class Stream extends React.Component {
 		const { activeTrack } = this.props;
 		if ( activeTrack ) {
 			audioElement.play();
+			this.visuals = new AudioVisualizer(audioElement, document.getElementById('viz-container'));
 		} else {
-			audoElement.pause();
+			audioElement.pause();
 		}
 
 	}
@@ -81,15 +83,16 @@ class Stream extends React.Component {
 							{
 								activeTrack ?
 
-								<div>
+								<div id='viz-container'>
 									<h4>Playing -> { activeTrack.origin.title } </h4>
-									<audio id='audio' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
+									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
 								</div>
 
 								:
 
 								<div>
 									<BadMood/>
+									{ window.cancelAnimationFrame(window.animation) }
 									<h4>Nothing is playing...</h4>
 								</div>
 							}
