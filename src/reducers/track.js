@@ -18,8 +18,7 @@ function playTrack(state, action) {
 };
 
 function pauseTrack(state) {
-  window.clearInterval(window.animation);
-  console.log("animation canceled");
+  console.log(window.animation, 'window animation');
   return { ...state, activeTrack: null}
 };
 

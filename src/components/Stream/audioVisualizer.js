@@ -5,7 +5,6 @@ class AudioVisualizer {
   constructor(el) {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
     this.el = el;
-    console.log(el);
     this.p = document.getElementById('visualizer');
     this.src = this.ctx.createMediaElementSource(this.el);
     this.analyzer = this.ctx.createAnalyser();
@@ -14,6 +13,7 @@ class AudioVisualizer {
     this.svgWidth = window.innerWidth - 410;
     this.barPadding = '1';
     this.svg = null;
+    this.active = false;
 
     //audio element -> audio src -> analyzer -> speakers
     this.src.connect(this.analyzer);
@@ -33,18 +33,17 @@ class AudioVisualizer {
         return i * (this.svgWidth / this.frequencyData.length)
       })
       .attr('width', this.svgWidth / this.frequencyData.length - this.barPadding)
-
-      this.renderFreqs();
   }
 
   createSvg(p, h, w) {
-    if (document.getElementById('viz')) {return}
+    let svg = document.getElementById('viz');
+    if(svg){
+      svg.parentNode.removeChild(svg);
+    }
     return d3.select(p).append('svg').attr('id', 'viz').attr('height', h).attr('width', w);
   }
-
+  
   renderFreqs() {
-    //loop forever
-    window.animation = window.setInterval(() => this.renderFreqs(), 50)
     this.analyzer.getByteFrequencyData(this.frequencyData);
 
     this.svg.selectAll('rect')
@@ -59,6 +58,13 @@ class AudioVisualizer {
         return 'rgb(255, 255, 255)';
       });
 
+    if ( !this.active ) {
+      console.log('this is false')
+      this.svg.selectAll('rect')
+        .attr('height', 0);
+      return;
+    }
+    window.requestAnimationFrame(() => this.renderFreqs());
 
   }
 

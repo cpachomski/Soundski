@@ -13,6 +13,7 @@ class Stream extends React.Component {
 
 	componentDidMount() {
 		this.playing = false;
+		this.viz = {};
 		window.animation = null;
 	}
 
@@ -32,9 +33,14 @@ class Stream extends React.Component {
 
 	startVisualization() {
 		setTimeout(() => {
-			window.viz = new AudioVisualizer(this.refs.audio);
-			
+			this.viz = new AudioVisualizer(this.refs.audio);
+			this.viz.active = true;
+			this.viz.renderFreqs();
 		}, 50);
+	}
+
+	stopVisualization() {
+		this.viz.active = false;
 	}
 
 	render() {
@@ -96,7 +102,10 @@ class Stream extends React.Component {
 								</div>
 
 								:
-								null
+
+								<div>
+									{ this.stopVisualization() }
+								</div>
 							}
 						</div>
 

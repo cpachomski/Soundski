@@ -10,6 +10,9 @@ $bungee: 'Bungee Hairline', sans-serif;
   &:hover, &:active, &:focus, &:visited {
     outline: none;
   }
+  &::-webkit-scrollbar { width: 0 !important }
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 
 .login {
@@ -83,11 +86,14 @@ $bungee: 'Bungee Hairline', sans-serif;
 
 .stream {
   display: flex;
-  flex-wrap: space-between;
+  overflow: hidden;
 }
 
 .left-col {
-  min-width: 400px;
+  position: absolute;
+  height: calc(100% - 10px);
+  width: 400px;
+  overflow: scroll;
   border-right: 10px solid #333;
   border-bottom: 10px solid #333;
 }
@@ -119,7 +125,7 @@ $bungee: 'Bungee Hairline', sans-serif;
 }
 
 .tracks {
-  margin-top: 135px;
+  margin-top: 145px;
   .track {
     color: #000;
     display: flex;

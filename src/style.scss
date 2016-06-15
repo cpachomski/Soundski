@@ -13,13 +13,18 @@ $athini: 'Athiti', sans-serif;
 $spacemono: 'Space Mono', monospace;
 $bungee: 'Bungee Hairline', sans-serif;
 
-
 body > div {
-  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 
 #visualizer {
   width: calc(100% - 410px);
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
   background: linear-gradient($soundcloud-opaque, $soundcloud);
   svg {
     width: 100% !important;
@@ -39,7 +44,6 @@ html {
 
 body {
   margin: 0;
-  overflow: hidden;
 }
 
 /* HTML5 display definitions

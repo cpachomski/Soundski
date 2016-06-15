@@ -51,6 +51,9 @@ export function auth() {
         .then((response) => response.json())
         .then((me) => {
           setTimeout(() => {
+              const visContainer = document.createElement('DIV');
+              visContainer.setAttribute('id', 'visualizer')
+              document.getElementById('container').appendChild(visContainer)
             dispatch(setMe(me));
             dispatch(fetchStream(me, session))
           }, 1000);
