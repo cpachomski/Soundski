@@ -13,7 +13,7 @@ function mapStateToProps(state) {
     	user,
     	loginInProgress,
     	loginSuccess,
-		tracks,
+		  tracks,
     	activeTrack
 	}
 };

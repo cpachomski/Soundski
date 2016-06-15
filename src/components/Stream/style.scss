@@ -46,7 +46,6 @@ $bungee: 'Bungee Hairline', sans-serif;
     left: 50%;
     top: 25%;
     transform:translate(-50%,-50%);
-    margin: 0px;
     transition: all 0.4s ease-in;
     transition-delay: 0.4s;
   }
@@ -73,6 +72,92 @@ $bungee: 'Bungee Hairline', sans-serif;
       width: 100%;
        color: $soundcloud;
     }
+  }
+}
+
+.stream {
+  display: flex;
+  flex-wrap: space-between;
+}
+
+.left-col {
+  min-width: 400px;
+  border-right: 10px solid #333;
+  border-bottom: 10px solid #333;
+}
+
+.user {
+  position: fixed;
+  width: calc(400px - 50px);
+  padding: 25px 25px 35px;
+  background-color: #333;
+  z-index: 99;
+
+  h2 {
+    color: $soundcloud;
+    font-family: $bungee;
+    letter-spacing: 3px;
+    font-size: 35px;
+    margin: 0px 0px 10px;
+  }
+
+  span {
+    color: #DDD;
+    font-size: 18px;
+    font-family: $spacemono;
+  }
+}
+
+.tracks {
+  margin-top: 135px;
+  .track {
+    color: #000;
+    display: flex;
+    padding: 15px 20px 25px;
+    position: relative;
+    border-bottom: 1px solid #DDD;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .details {
+      flex-grow: 3;
+      .title {
+        color: $soundcloud;
+        font-size: 18px;
+        max-width: 200px;
+        display: block;
+        font-family: $spacemono;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+      }
+      .length {
+        text-align: center;
+        font-size: 1x;
+        color: #333;
+        font-family: $athini;
+      }
+    }
+
+
+    button {
+      background: none;
+      border: none;
+      font-size: 50px;
+      text-align: right;
+      color: $soundcloud-opaque;
+      line-height: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        position: absolute;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+      }
+    }
+
   }
 }
 
