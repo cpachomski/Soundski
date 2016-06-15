@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import moment from 'moment';
 import Arrow from 'react-icons/lib/md/play-arrow';
 import Pause from 'react-icons/lib/md/pause';
+import BadMood from 'react-icons/lib/md/mood-bad';
 import { MorphReplace } from 'react-svg-morph';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
@@ -28,13 +29,13 @@ class Stream extends React.Component {
 	}
 
 	render() {
-		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay } = this.props;
+		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay, onPause } = this.props;
 
 		const loginClass = classNames({
 			'login': true,
 			'login active': loginInProgress,
 			'login complete': loginSuccess
-		})
+		});
 
 		const streamClass = loginSuccess ? 'stream logged-in': 'stream';
 
@@ -63,7 +64,12 @@ class Stream extends React.Component {
 													<span className='length'>{moment().seconds(track.origin.duration).format('mm:ss')}</span>
 												</div>
 												<div className='control'>
-												<button className='btn play' type='button' onClick={() => onPlay(track)}><Arrow /></button>
+												{
+													activeTrack && activeTrack.origin.title ==  track.origin.title ?
+														<button className='btn' type='button' onClick={() => onPause()}><Pause /></button>
+														:
+														<button className='btn' type='button' onClick={() => onPlay(track)}><Arrow /></button>
+												}
 												</div>
 											</div>
 										)
@@ -82,7 +88,10 @@ class Stream extends React.Component {
 
 								:
 
-								null
+								<div>
+									<BadMood/>
+									<h4>Nothing is playing...</h4>
+								</div>
 							}
 						</div>
 

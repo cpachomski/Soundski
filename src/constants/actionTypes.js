@@ -4,3 +4,4 @@ export const LOGIN_END = "LOGIN_END";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TRACKS_SET = 'TRACKS_SET';
 export const TRACK_PLAY = 'TRACK_PLAY';
+export const TRACK_PAUSE = 'TRACK_PAUSE';
