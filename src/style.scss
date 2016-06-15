@@ -21,6 +21,9 @@ body > div {
 #visualizer {
   width: calc(100% - 410px);
   background: linear-gradient($soundcloud-opaque, $soundcloud);
+  svg {
+    width: 100% !important;
+  }
 }
 
 
@@ -36,6 +39,7 @@ html {
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 /* HTML5 display definitions

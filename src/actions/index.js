@@ -4,6 +4,6 @@ import { setTracks, playTrack, pauseTrack } from './track';
 export {
 	auth,
 	setTracks,
-  playTrack,
-  pauseTrack
+  	playTrack,
+  	pauseTrack
 };

@@ -1,17 +1,17 @@
 import d3 from 'd3';
 
-
 class AudioVisualizer {
 
   constructor(el) {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
     this.el = el;
-    this.p = p;
+    console.log(el);
+    this.p = document.getElementById('visualizer');
     this.src = this.ctx.createMediaElementSource(this.el);
     this.analyzer = this.ctx.createAnalyser();
     this.frequencyData = new Uint8Array(200);
-    this.svgHeight = '300';
-    this.svgWidth = '1200';
+    this.svgHeight = window.innerHeight;
+    this.svgWidth = window.innerWidth - 410;
     this.barPadding = '1';
     this.svg = null;
 
@@ -38,24 +38,25 @@ class AudioVisualizer {
   }
 
   createSvg(p, h, w) {
+    if (document.getElementById('viz')) {return}
     return d3.select(p).append('svg').attr('id', 'viz').attr('height', h).attr('width', w);
   }
 
   renderFreqs() {
     //loop forever
-    window.animation = window.requestAnimationFrame(() => this.renderFreqs())
+    window.animation = window.setInterval(() => this.renderFreqs(), 50)
     this.analyzer.getByteFrequencyData(this.frequencyData);
 
     this.svg.selectAll('rect')
       .data(this.frequencyData)
       .attr('y', (d) => {
-        return this.svgWidth - d;
+        return this.svgHeight - (d * 3);
       })
       .attr('height', (d) => {
-        return d;
+        return d * 3;
       })
       .attr('fill', (d) => {
-        return 'rgb(0,0,' + d + ')';
+        return 'rgb(255, 255, 255)';
       });
 
 

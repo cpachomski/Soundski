@@ -30,6 +30,13 @@ class Stream extends React.Component {
 
 	}
 
+	startVisualization() {
+		setTimeout(() => {
+			window.viz = new AudioVisualizer(this.refs.audio);
+			
+		}, 50);
+	}
+
 	render() {
 		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay, onPause } = this.props;
 
@@ -82,10 +89,10 @@ class Stream extends React.Component {
 						<div className='active-track'>
 							{
 								activeTrack ?
-
 								<div id='viz-container'>
 									<h4>Playing -> { activeTrack.origin.title } </h4>
-									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}></audio>
+									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}> { this.startVisualization() }</audio>
+									
 								</div>
 
 								:

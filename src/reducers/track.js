@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/actionTypes';
+import Visualizer from '../components/stream/audioVisualizer';
 
 const initialState = {
   tracks: [],
@@ -17,6 +18,8 @@ function playTrack(state, action) {
 };
 
 function pauseTrack(state) {
+  window.clearInterval(window.animation);
+  console.log("animation canceled");
   return { ...state, activeTrack: null}
 };
 
