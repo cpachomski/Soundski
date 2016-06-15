@@ -41,6 +41,7 @@ class Stream extends React.Component {
 
 	stopVisualization() {
 		this.viz.active = false;
+		document.getElementById('viz').parentNode.removeChild(document.getElementById('viz'));
 	}
 
 	render() {
@@ -59,7 +60,7 @@ class Stream extends React.Component {
 				{ !user ?
 
 					<div className={loginClass} ref='login'>
-						<h1>Soundcloud Player</h1>
+						<h1>Soundski</h1>
 						<button className='btn' onClick={onAuth}>Login</button>
 					</div> :
 					<div className='stream'>
