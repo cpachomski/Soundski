@@ -49,10 +49,10 @@ class AudioVisualizer {
     this.svg.selectAll('rect')
       .data(this.frequencyData)
       .attr('y', (d) => {
-        return this.svgHeight - (d * 3);
+        return this.svgHeight - (d * 5);
       })
       .attr('height', (d) => {
-        return d * 3;
+        return d * 5;
       })
       .attr('fill', (d) => {
         return 'rgb(255, 255, 255)';

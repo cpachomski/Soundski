@@ -82,6 +82,13 @@ $bungee: 'Bungee Hairline', sans-serif;
        color: $soundcloud;
     }
   }
+
+  .search-form {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .stream {

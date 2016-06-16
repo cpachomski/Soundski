@@ -10,6 +10,7 @@ function setMe(user) {
   }
 }
 
+
 function setLoginStart() {
   return {
     type: actionTypes.LOGIN_START
@@ -29,7 +30,7 @@ function setLoginSuccess() {
 }
 
 
-function fetchStream(me, session) {
+function fetchMyStream(me, session) {
   return function(dispatch) {
     fetch(`//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`)
       .then((response) => response.json())
@@ -41,7 +42,7 @@ function fetchStream(me, session) {
 
 
 export function auth() {
-  return function(dispatch){
+  return function(dispatch) {
     dispatch(setLoginStart());
     SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
   	SC.connect().then((session) => {
@@ -55,7 +56,7 @@ export function auth() {
               visContainer.setAttribute('id', 'visualizer')
               document.getElementById('container').appendChild(visContainer)
             dispatch(setMe(me));
-            dispatch(fetchStream(me, session))
+            dispatch(fetchMyStream(me, session))
           }, 1000);
   			});
   	});

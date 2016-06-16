@@ -46,14 +46,12 @@ export default React.createClass ({
 	},
 
 	handleSearchTermChange(e){
-		() => {
-			setState({searchTerm: e.target.value});
-		}
+		console.log(e.target.value);
+		() => onSearch(e.target.value)
 	},
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this);
 	},
 
 

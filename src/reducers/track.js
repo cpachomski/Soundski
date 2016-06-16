@@ -18,7 +18,6 @@ function playTrack(state, action) {
 };
 
 function pauseTrack(state) {
-  console.log(window.animation, 'window animation');
   return { ...state, activeTrack: null}
 };
 
