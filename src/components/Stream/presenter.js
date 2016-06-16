@@ -47,7 +47,7 @@ export default React.createClass ({
 
 	handleSearchTermChange(e){
 		console.log(e.target.value);
-		() => onSearch(e.target.value)
+		this.props.onUpdateSearchTerm(e.target.value)
 	},
 
 	handleSubmit(e) {

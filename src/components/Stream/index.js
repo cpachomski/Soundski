@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onAuth: bindActionCreators(actions.auth, dispatch),
 		onUpdateSearchTerm: bindActionCreators(actions.setSearchTerm, dispatch),
-		onSearch: bindActionCreators(actions.search, dispatch),
+		// onSearch: bindActionCreators(actions.search, dispatch),
     	onPlay: bindActionCreators(actions.playTrack, dispatch),
     	onPause: bindActionCreators(actions.pauseTrack, dispatch)
 	}

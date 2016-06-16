@@ -1,4 +1,3 @@
-import { CLIENT_ID, REDIRECT_URI } from '../constants/auth';
 import * as actionTypes from '../constants/actionTypes';
 
 function updateSearchTerm(searchTerm) {
@@ -17,21 +16,9 @@ function setArtist(artist) {
 
 export function setSearchTerm(searchTerm) {
 	console.log(searchTerm);
-	return function(dispactch) {
+	return function(dispatch) {
 		dispatch(updateSearchTerm(searchTerm));
 	}
 }
 
 
-export function search(artistName) {
-  return function(dispatch) {
-    console.log(artistName);
-    dispatch(setLoginStart());
-    SC.initialize({client_id: CLIENT_ID, redirect_url: REDIECT_URI});
-    SC.get('/users', {q: atistName}).then((artists) => {
-      dispatch(setLoginEnd());
-      dispatch(setLoginSuccess());
-      dispatch(setArtist(artists[0]));
-    });
-  }
-}

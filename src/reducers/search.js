@@ -5,14 +5,14 @@ const initialState = {
 }
 
 function setSearchTerm(state, action) {
-	const {  } = action;
+	const { searchTerm } = action;
 	return { ...state, searchTerm }
 }
 
 export default function ( state = initialState, action ) {
 	switch(action.type) {
 		case actionTypes.UPDATE_SEARCH_TERM:
-			return
+			return setSearchTerm(state, action)
 	}
 	return state;
 };
