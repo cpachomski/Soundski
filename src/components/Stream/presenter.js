@@ -9,13 +9,13 @@ import AudioVisualizer from './audioVisualizer';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
 
-class Stream extends React.Component {
+export default React.createClass ({
 
 	componentDidMount() {
 		this.playing = false;
 		this.viz = {};
 		window.animation = null;
-	}
+	},
 
 	componentDidUpdate() {
 		const audioElement = ReactDOM.findDOMNode(this.refs.audio);
@@ -29,7 +29,7 @@ class Stream extends React.Component {
 			}
 		}
 
-	}
+	},
 
 	startVisualization() {
 		setTimeout(() => {
@@ -37,12 +37,25 @@ class Stream extends React.Component {
 			this.viz.active = true;
 			this.viz.renderFreqs();
 		}, 50);
-	}
+	},
 
 	stopVisualization() {
 		this.viz.active = false;
+		if (!document.getElementById('viz')){return} 
 		document.getElementById('viz').parentNode.removeChild(document.getElementById('viz'));
-	}
+	},
+
+	handleSearchTermChange(e){
+		() => {
+			setState({searchTerm: e.target.value});
+		}
+	},
+
+	handleSubmit(e) {
+		e.preventDefault();
+		console.log(this);
+	},
+
 
 	render() {
 		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay, onPause } = this.props;
@@ -62,6 +75,13 @@ class Stream extends React.Component {
 					<div className={loginClass} ref='login'>
 						<h1>Soundski</h1>
 						<button className='btn' onClick={onAuth}>Login</button>
+						<form className='search-form' onSubmit={ this.handleSubmit }>
+							<input type='text'
+								   placeholder="Enter Artist's Soundcloud Name"
+								   onChange={this.handleSearchTermChange} />
+							<input type='submit'
+								   value='Search'/>
+						</form>
 					</div> :
 					<div className='stream'>
 						<div className='left-col'>
@@ -115,6 +135,4 @@ class Stream extends React.Component {
 			</div>
 		)
 	}
-}
-
-export default Stream
+})
