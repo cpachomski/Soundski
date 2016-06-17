@@ -20,6 +20,9 @@ class AudioVisualizer {
     this.src.connect(this.ctx.destination);
 
     this.setupViz()
+    window.addEventListener('resize', () => {
+      this.resizeViz();
+    })
   }
 
   setupViz() {
@@ -32,27 +35,37 @@ class AudioVisualizer {
       .attr('x', (d, i) => {
         return i * (this.svgWidth / this.frequencyData.length)
       })
-      .attr('width', this.svgWidth / this.frequencyData.length - this.barPadding)
+      .attr('width', this.svgWidth / this.frequencyData.length + 1)
   }
 
-  createSvg(p, h, w) {
+  createSvg() {
     let svg = document.getElementById('viz');
     if(svg){
       svg.parentNode.removeChild(svg);
     }
-    return d3.select(p).append('svg').attr('id', 'viz').attr('height', h).attr('width', w);
+    return d3.select(this.p).append('svg').attr('id', 'viz').attr('height', this.svgHeight).attr('width', this.svgWidth);
   }
-  
+
+  resizeViz() {
+    document.getElementById('viz').parentNode.removeChild(document.getElementById('viz'));
+    this.active = false;
+    this.active = true;
+    this.svgWidth = window.innerWidth;
+    this.svgHeight = window.innerHeight;
+    this.setupViz();
+    this.renderFreqs();
+  }
+
   renderFreqs() {
     this.analyzer.getByteFrequencyData(this.frequencyData);
 
     this.svg.selectAll('rect')
       .data(this.frequencyData)
       .attr('y', (d) => {
-        return this.svgHeight - (d * 5);
+        return this.svgHeight - (d * 1);
       })
       .attr('height', (d) => {
-        return d * 5;
+        return d * 1;
       })
       .attr('fill', (d) => {
         return 'rgb(255, 255, 255)';
