@@ -1,5 +1,4 @@
 import * as actionTypes from '../constants/actionTypes';
-import Visualizer from '../components/stream/audioVisualizer';
 
 const initialState = {
   tracks: [],
@@ -14,11 +13,11 @@ function setTracks(state, action) {
 
 function playTrack(state, action) {
   const { track } = action;
-  return { ...state, activeTrack: track};
+  return { ...state, activeTrack: track };
 };
 
 function pauseTrack(state) {
-  return { ...state, activeTrack: null}
+  return { ...state, activeTrack: null } 
 };
 
 export default function(state = initialState, action) {
