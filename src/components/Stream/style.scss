@@ -39,6 +39,7 @@ $bungee: 'Bungee Hairline', sans-serif;
     .btn {
       color: #FFF !important;
       height: 100% !important;
+      width: 100% !important;
       margin: 0px;
       color: $soundcloud;
     }
@@ -75,19 +76,38 @@ $bungee: 'Bungee Hairline', sans-serif;
     transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
     z-index: 1;
 
-    &:hover,  &:focus, &:active  {
-      cursor: pointer;
-      height: 50px;
-      width: 100%;
-       color: $soundcloud;
+    &:hover{
+       cursor: pointer;
     }
+
+
   }
 
   .search-form {
     position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: calc(50% + 75px);
+    width: 100%;
+
+    input {
+      position: absolute;
+      height: 50px;
+      width: 250px;
+      font-size: 20px;
+      font-weight: bold;
+      left: 50%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-align: center;
+      border: none;
+      color: $soundcloud;
+      transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
+      transform: translateX(-50%);
+      &[type='submit'] {
+        display: none;
+      }
+    }
+
+
   }
 }
 
