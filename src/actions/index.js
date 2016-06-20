@@ -1,11 +1,11 @@
 import { auth } from './auth'
 import { setTracks, playTrack, pauseTrack } from './track';
-import { setSearchTerm } from './search';
+import { setSearchTerm, setArtist } from './search';
 
 export {
 	auth,
 	setSearchTerm,
-	setTracks,
+	setArtist,
   	playTrack,
   	pauseTrack
 };

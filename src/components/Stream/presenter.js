@@ -47,7 +47,6 @@ export default React.createClass ({
 	},
 
 	handleSearchTermChange(e){
-		console.log(e.target.value);
 		this.props.onUpdateSearchTerm(e.target.value)
 	},
 
@@ -58,7 +57,15 @@ export default React.createClass ({
 
 
 	render() {
-		const { user, loginInProgress, loginSuccess, tracks = [], activeTrack, onAuth, onPlay, onPause } = this.props;
+		const { 
+			user,
+			loginInProgress,
+			loginSuccess,
+			tracks = [],
+			activeTrack,
+		 	onAuth,
+		 	onPlay,
+		 	onPause } = this.props;
 
 		const loginClass = classNames({
 			'login': true,

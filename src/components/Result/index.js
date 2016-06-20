@@ -1,33 +1,18 @@
 import React from 'react';
-import './style.scss';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+import * as actions from '../../actions'
+import Results from './presenter';
 
+function mapStateToProps(state) {
+	return {}
+};
 
-export default React.createClass({
-	getInitialState() {
-		return {
-			mounted: false
-		}
-	},
-
-	componentDidMount() {
-		setTimeout(()=> {
-			this.setState({
-				mounted: true
-			})
-		}, 50)
-	},
-
-	render() {
-		const { result, number } = this.props;
-		const animClass = this.state.mounted ? 'search-result mounted ' + 'no-' + number : 'search-result '  + 'no-' + number
-		return (
-			<div className={animClass}>
-				<img src={ result.avatar_url } />
-				<div className='result-info'>
-					<p className='full_name'>Artist: { result.full_name} </p>
-					<p className='username'>Account: { result.username }	</p>
-				</div>
-			</div>
-		)
+function mapDispatchToProps(dispatch) {
+	return {
+		setArtist: bindActionCreators(actions.setArtist, dispatch)
 	}
-})
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

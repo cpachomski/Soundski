@@ -1,6 +1,14 @@
-.search-results {
+.results-container {
 	max-width: 500px;
 	margin: 100px auto 0px auto;
-	max-height: 550px;
-	overflow: scroll;
+
+	.results-count {
+		color: white;
+	}
+	
+	.results {
+		overflow: scroll;
+		max-height: 550px;
+
+	}
 }

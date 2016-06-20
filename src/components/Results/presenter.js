@@ -9,18 +9,25 @@ export default React.createClass({
 		const { searchResults, searchTerm } = this.props;
 		const resultsLength = searchTerm.split('').length;
 		return (
-			<div className='search-results'>
-				<p className='results-count'>{ resultsLength } artist(s) found.</p>
-				{	resultsLength > 0 ?
-					searchResults.map((result, i) => {
-						return (
-							<Result key={i} number={i} result={result} />
-						)
-					})
-
-					: 
+			<div>
+				{ resultsLength > 0 ?
+					<div className='results-container'>
+						<p className='results-count'>{ resultsLength } artist(s) found</p>
+						<div className='results'>
+							{
+								searchResults.map((result, i) => {
+									return (
+										<Result key={i} number={i} result={result} />
+									)
+								})
+							}
+						</div>
+					</div>
+					:
 
 					null
+
+
 				}
 			</div>
 		)

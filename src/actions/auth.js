@@ -1,6 +1,6 @@
 import { CLIENT_ID, REDIRECT_URI } from '../constants/auth';
 import * as actionTypes from '../constants/actionTypes';
-import { setTracks } from '../actions/track';
+import { setTracks } from './track';
 
 
 function setMe(user) {

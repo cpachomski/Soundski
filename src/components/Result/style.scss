@@ -14,12 +14,13 @@ $bungee: 'Bungee Hairline', sans-serif;
 	border-bottom: 1px solid white;
 	font-weight: bold;
 	opacity: 0;
+	transform: translateX(-100px);
 	transition: all 0.3s;
 	background: white;
 
 	@for $i from 1 through 40 {
 	  &.no-#{$i} {
-	    transition-delay: $i * .2s;
+	    transition-delay: $i * .1s;
 	  }
 	}
 
@@ -38,11 +39,11 @@ $bungee: 'Bungee Hairline', sans-serif;
 
 	&.mounted {
 		opacity: 1;
+		transform: translateX(0px);
 	}
-	&:first-child {
-		border-top: 2px solid white
+
+	&:hover {
+		cursor: pointer;
 	}
-	&:last-child {
-		border-bottom: 2px solid white
-	}
+
 }
