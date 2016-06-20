@@ -21,6 +21,7 @@ $bungee: 'Bungee Hairline', sans-serif;
   top: 0px;
   height: 100%;
   font-family: $bungee;
+  overflow: scroll;
 
   background: linear-gradient($soundcloud-opaque, $soundcloud);
   &.active {
@@ -69,7 +70,7 @@ $bungee: 'Bungee Hairline', sans-serif;
     border: none;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: calc(25% + 150px);
     letter-spacing: 3px;
     color: $soundcloud;
     transform: translate(-50%,-50%);
@@ -86,7 +87,7 @@ $bungee: 'Bungee Hairline', sans-serif;
 
   .search-form {
     position: absolute;
-    top: calc(50% + 75px);
+    top: calc(25% + 200px);
     width: 100%;
 
     input {

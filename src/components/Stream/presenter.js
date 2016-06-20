@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Results from '../Results';
 import Tracks from '../Tracks';
 import classNames from 'classnames';
 import moment from 'moment';
@@ -81,7 +82,9 @@ export default React.createClass ({
 								   ref='searchBox' />
 							<input type='submit'
 								   value='Search'/>
+							<Results />
 						</form>
+
 					</div> :
 					<div className='stream'>
 						<div className='left-col'>

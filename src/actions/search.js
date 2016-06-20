@@ -25,12 +25,14 @@ function setArtist(artist) {
 export function setSearchTerm(searchTerm) {
 	return function(dispatch) {
 		dispatch(updateSearchTerm(searchTerm));
-    SC.initialize({ client_id: CLIENT_ID });
-    SC.get('/users', {q: searchTerm})
-      .then((artists) => {
-        dispatch(updateSearchResults(artists));
-      })
+    if (searchTerm.split('').length > 0) {
+
+      SC.initialize({ client_id: CLIENT_ID });
+      SC.get('/users', {q: searchTerm})
+        .then((artists) => {
+          dispatch(updateSearchResults(artists));
+        })
+    } 
 	}
 }
-
 
