@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import moment from 'moment';
 import Arrow from 'react-icons/lib/md/play-arrow';
 import Pause from 'react-icons/lib/md/pause';
+import SCIcon from 'react-icons/lib/fa/soundcloud';
 import AudioVisualizer from '../../visualizers/audioVisualizer';
 import { CLIENT_ID } from '../../constants/auth';
 import './style.scss';
@@ -86,7 +87,10 @@ export default React.createClass ({
 				{ !user ?
 
 					<div className={loginClass} ref='login'>
-						<h1>Soundski</h1>
+						<h1>Soundski
+							<br/>
+							<SCIcon />
+						</h1>
 						<button className='btn' onClick={onAuth}>Login</button>
 						<form className='search-form' onSubmit={ this.handleSubmit }>
 							<input type='text'
