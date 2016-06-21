@@ -7,7 +7,7 @@ import './style.scss';
 export default React.createClass({
 	render() {
 		const { searchResults, searchTerm } = this.props;
-		const resultsLength = searchTerm.split('').length;
+		const resultsLength = searchResults.length;
 		return (
 			<div>
 				{ resultsLength > 0 ?

@@ -26,18 +26,17 @@ export default React.createClass({
   },
 
 
-
   render() {
     const { activeTrack, track, onPlay, onPause } = this.props
     return (
       <div className='track'>
         <div className='details'>
-          <span className='title'>{track.origin.title}</span>
-          <span className='length'>{moment().seconds(track.origin.duration).format('mm:ss')}</span>
+          <span className='title'>{track.title}</span>
+          <span className='length'>{moment().seconds(track.duration).format('mm:ss')}</span>
         </div>
         <div className='control'>
         {
-          activeTrack && activeTrack.origin.title == track.origin.title ?
+          activeTrack && activeTrack.title == track.title ?
             <button className='btn' type='button' onClick={() => onPause()}><Pause /></button>
             :
             <button className='btn' type='button' onClick={() => onPlay(track)}><Arrow /></button>

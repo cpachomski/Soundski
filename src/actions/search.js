@@ -55,8 +55,15 @@ export function setSearchTerm(searchTerm) {
 
 export function setArtist(artist) {
   return function(dispatch) {
-    dispatch(setMe(artist));
-    dispatch(fetchArtistStream(artist));
+    setTimeout(() => {
+      const visContainer = document.createElement('DIV');
+      visContainer.setAttribute('id', 'visualizer');
+      document.getElementById('container').appendChild(visContainer);
+
+      dispatch(setMe(artist));
+      dispatch(fetchArtistStream(artist));
+      
+    })
   }
 }
 

@@ -106,8 +106,7 @@ export default React.createClass ({
 							{
 								activeTrack ?
 								<div id='viz-container'>
-									<h4>Playing -> { activeTrack.origin.title } </h4>
-									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.origin.stream_url}?client_id=${CLIENT_ID}`}> { this.startVisualization() }</audio>
+									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.stream_url}?client_id=${CLIENT_ID}`}> { this.startVisualization() }</audio>
 
 								</div>
 
