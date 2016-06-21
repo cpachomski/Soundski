@@ -63,6 +63,7 @@ export default React.createClass ({
 			loginSuccess,
 			tracks = [],
 			activeTrack,
+			searchComplete,
 		 	onAuth,
 		 	onPlay,
 		 	onPause } = this.props;
@@ -71,6 +72,11 @@ export default React.createClass ({
 			'login': true,
 			'login active': loginInProgress,
 			'login complete': loginSuccess
+		});
+
+		const searchClass = classNames({
+			'': true,
+			'complete': searchComplete
 		});
 
 		const streamClass = loginSuccess ? 'stream logged-in': 'stream';
@@ -86,6 +92,7 @@ export default React.createClass ({
 							<input type='text'
 								   placeholder="Search"
 								   onChange={this.handleSearchTermChange}
+								   className={searchClass}
 								   ref='searchBox' />
 							<input type='submit'
 								   value='Search'/>

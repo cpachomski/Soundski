@@ -33,13 +33,14 @@ $bungee: 'Bungee Hairline', sans-serif;
   }
 
   &.complete {
+    height: 110%;
     h1 {
       margin: 0px;
       height: 0px;
     }
     .btn {
       color: #FFF !important;
-      height: 100% !important;
+      height: 300% !important;
       width: 100% !important;
       margin: 0px;
       color: $soundcloud;
@@ -104,6 +105,15 @@ $bungee: 'Bungee Hairline', sans-serif;
       color: $soundcloud;
       transition: all 0.3s cubic-bezier(.87,.21,.97,.55);
       transform: translateX(-50%);
+
+      &.complete {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        color: white;
+        z-index: 99;
+      }
       &:focus {
         width: 100%;
       }

@@ -10,6 +10,13 @@ function setMe(user) {
   }
 }
 
+function setSearchComplete() {
+  return {
+    type: actionTypes.SEARCH_COMPLETE
+  }
+}
+
+
 function updateSearchTerm(searchTerm) {
   return {
     type: actionTypes.UPDATE_SEARCH_TERM,
@@ -29,19 +36,24 @@ function updateSearchResults(searchResults) {
 function fetchArtistStream(artist) {
   return function(dispatch) {
     SC.initialize({ client_id: CLIENT_ID });
+    dispatch(setSearchComplete());
     SC.get(`/users/${artist.id}/tracks`)
       .then((data) => {
-        console.log('here');
-        dispatch(setTracks(data))
-        console.log("here");
+        setTimeout(() => {
+          const visContainer = document.createElement('DIV');
+          visContainer.setAttribute('id', 'visualizer');
+          document.getElementById('container').appendChild(visContainer);
+          dispatch(setMe(artist));
+          dispatch(setTracks(data))
+        }, 1000)
       })
   }
 }
 
 
 export function setSearchTerm(searchTerm) {
-	return function(dispatch) {
-		dispatch(updateSearchTerm(searchTerm));
+  return function(dispatch) {
+    dispatch(updateSearchTerm(searchTerm));
     if (searchTerm.split('').length > 0) {
 
       SC.initialize({ client_id: CLIENT_ID });
@@ -50,20 +62,12 @@ export function setSearchTerm(searchTerm) {
           dispatch(updateSearchResults(artists));
         })
     } 
-	}
+  }
 }
 
 export function setArtist(artist) {
   return function(dispatch) {
-    setTimeout(() => {
-      const visContainer = document.createElement('DIV');
-      visContainer.setAttribute('id', 'visualizer');
-      document.getElementById('container').appendChild(visContainer);
-
-      dispatch(setMe(artist));
-      dispatch(fetchArtistStream(artist));
-      
-    })
+    dispatch(fetchArtistStream(artist));
   }
 }
 

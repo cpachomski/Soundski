@@ -2,6 +2,7 @@ export const ME_SET = 'ME_SET';
 export const ARTIST_SET = 'ARTIST_SET';
 export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
 export const UPDATE_SEARCH_RESULTS = 'UPDATE_SEARCH_RESULTS';
+export const SEARCH_COMPLETE = 'SEARCH_COMPLETE';
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_END = "LOGIN_END";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";

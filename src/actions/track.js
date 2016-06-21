@@ -5,14 +5,14 @@ export function setTracks(tracks) {
 		type: actionTypes.TRACKS_SET,
 		tracks
 	}
-};
+}
 
 export function playTrack(track) {
   return {
     type: actionTypes.TRACK_PLAY,
     track
   }
-};
+}
 
 export function pauseTrack() {
   return {
