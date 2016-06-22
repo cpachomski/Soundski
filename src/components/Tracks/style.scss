@@ -1,0 +1,63 @@
+$dark-red: #AA4439;
+$light-red: #B85348;
+$soundcloud: rgba(255, 58, 0, 0.9);
+$soundcloud-opaque: rgba(255, 58, 0, 0.7);
+$athini: 'Athiti', sans-serif;
+$spacemono: 'Space Mono', monospace;
+$bungee: 'Bungee Hairline', sans-serif; 
+$chathura: 'Chathura', sans-serif;
+
+.tracks {
+  margin-top: 125px;
+  
+  .track {
+    color: #000;
+    display: flex;
+    padding: 15px 20px 25px;
+    position: relative;
+    border-bottom: 1px solid #DDD;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .details {
+      flex-grow: 3;
+      .title {
+        color: $soundcloud;
+        font-size: 18px;
+        max-width: 200px;
+        display: block;
+        font-family: $spacemono;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+      }
+      .length {
+        text-align: center;
+        font-size: 1x;
+        color: #333;
+        font-family: $athini;
+      }
+    }
+
+
+    button {
+      background: none;
+      border: none;
+      font-size: 50px;
+      text-align: right;
+      color: $soundcloud-opaque;
+      line-height: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        position: absolute;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+      }
+    }
+
+  }
+}
+

@@ -25,6 +25,10 @@ export default React.createClass({
     }
   },
 
+  formatTime(duration) {
+    let tempTime = moment.duration(duration);
+    return `${tempTime.minutes()}:${tempTime.seconds()}`;
+  },
 
   render() {
     const { activeTrack, track, onPlay, onPause } = this.props
@@ -32,7 +36,7 @@ export default React.createClass({
       <div className='track'>
         <div className='details'>
           <span className='title'>{track.title}</span>
-          <span className='length'>{moment().seconds(track.duration).format('mm:ss')}</span>
+          <span className='length'>{this.formatTime(track.duration)}</span>
         </div>
         <div className='control'>
         {
@@ -45,4 +49,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+})  

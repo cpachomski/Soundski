@@ -29,8 +29,11 @@ export default React.createClass({
 			<div className={animClass} onClick={ this.handleClick }>
 				<img src={ result.avatar_url } />
 				<div className='result-info'>
-					<p className='full_name'>Artist: { result.full_name} </p>
-					<p className='username'>Account: { result.username }	</p>
+					<p className='username'>{ result.username }	</p>
+					<p className='followers'>Followers: { result.followers_count }	</p>
+					<p className='song-count'>Tracks: { result.track_count }	</p>
+					<p className='country'>Country: { result.country || "unknown" }	</p>
+
 				</div>
 			</div>
 		)

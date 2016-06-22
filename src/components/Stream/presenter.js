@@ -14,6 +14,12 @@ import './style.scss';
 
 export default React.createClass ({
 
+	getInitialState() {
+		return {
+			tracksLoaded: false
+		}
+	},
+
 	componentDidMount() {
 		this.playing = false;
 		this.viz = {};
@@ -22,7 +28,7 @@ export default React.createClass ({
 
 	componentDidUpdate() {
 		const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-
+		
 		if (audioElement) {
 			const { activeTrack } = this.props;
 			if ( activeTrack ) {
@@ -81,7 +87,20 @@ export default React.createClass ({
 			'complete': searchComplete
 		});
 
-		const streamClass = loginSuccess ? 'stream logged-in': 'stream';
+
+		if ( tracks.length > 0 ) {
+			setTimeout(() => {
+				this.setState({
+					tracksLoaded: true
+				})
+			}, 100)
+		}
+
+
+		const streamClass = this.state.tracksLoaded ? 'stream loaded' : 'stream';
+		
+
+
 
 		return (
 			<div className='stream-presenter'>
@@ -105,7 +124,7 @@ export default React.createClass ({
 						</form>
 
 					</div> :
-					<div className='stream'>
+					<div className={ streamClass }>
 						<div className='left-col'>
 							<Details user={ user }/>
 							<Tracks tracks={ tracks } />
