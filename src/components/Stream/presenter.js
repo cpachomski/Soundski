@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Results from '../Results';
+import Details from '../Details';
 import Tracks from '../Tracks';
 import classNames from 'classnames';
 import moment from 'moment';
@@ -86,17 +87,17 @@ export default React.createClass ({
 			<div className='stream-presenter'>
 				{ !user ?
 
-					<div className={loginClass} ref='login'>
+					<div className={ loginClass } ref='login'>
 						<h1>Soundski
 							<br/>
 							<SCIcon />
 						</h1>
-						<button className='btn' onClick={onAuth}>Login</button>
+						<button className='btn' onClick={ onAuth }>Login</button>
 						<form className='search-form' onSubmit={ this.handleSubmit }>
 							<input type='text'
 								   placeholder="Search"
-								   onChange={this.handleSearchTermChange}
-								   className={searchClass}
+								   onChange={ this.handleSearchTermChange }
+								   className={ searchClass }
 								   ref='searchBox' />
 							<input type='submit'
 								   value='Search'/>
@@ -106,18 +107,14 @@ export default React.createClass ({
 					</div> :
 					<div className='stream'>
 						<div className='left-col'>
-							<div className='user'>
-								<h2 className='username'> { user.username }</h2>
-								<span className='city'>{ user.city },</span>
-								<span className='country'> { user.country }</span>
-							</div>
-							<Tracks tracks={tracks} />
+							<Details user={ user }/>
+							<Tracks tracks={ tracks } />
 						</div>
 						<div className='active-track'>
 							{
 								activeTrack ?
 								<div id='viz-container'>
-									<audio crossOrigin='anonymous' ref='audio' src={`${activeTrack.stream_url}?client_id=${CLIENT_ID}`}> { this.startVisualization() }</audio>
+									<audio crossOrigin='anonymous' ref='audio' src={`${ activeTrack.stream_url }?client_id=${ CLIENT_ID }`}> { this.startVisualization() }</audio>
 
 								</div>
 
@@ -134,4 +131,4 @@ export default React.createClass ({
 			</div>
 		)
 	}
-})
+});
