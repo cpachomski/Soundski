@@ -130,12 +130,14 @@ $bungee: 'Bungee Hairline', sans-serif;
 .stream {
   overflow: hidden;
   .left-col {
-    transition: transform 0.3s ease-in;
+    opacity: 0;
+    transition: all 0.5s ease-out;
     transform: translateX(-100%);
 
   }
   &.loaded {
     .left-col {
+      opacity: 1;
       transform: translateX(0%);
     }
   }

@@ -14,11 +14,6 @@ import './style.scss';
 
 export default React.createClass ({
 
-	getInitialState() {
-		return {
-			tracksLoaded: false
-		}
-	},
 
 	componentDidMount() {
 		this.playing = false;
@@ -88,17 +83,11 @@ export default React.createClass ({
 		});
 
 
-		if ( tracks.length > 0 ) {
-			setTimeout(() => {
-				this.setState({
-					tracksLoaded: true
-				})
-			}, 100)
+		let streamClass = 'stream';
+		if (tracks.length > 0) {
+			streamClass = 'stream loaded';
+			document.getElementById('visualizer').classList.add('loaded');
 		}
-
-
-		const streamClass = this.state.tracksLoaded ? 'stream loaded' : 'stream';
-		
 
 
 

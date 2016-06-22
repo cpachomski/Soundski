@@ -17,7 +17,12 @@ export default React.createClass({
 							{
 								searchResults.map((result, i) => {
 									return (
+										result.track_count > 0 ?
 										<Result key={i} number={i} result={result} />
+										
+										:
+
+										null
 									)
 								})
 							}
