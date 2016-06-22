@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --config ./webpack.config.js",
+    "start": "set NODE_ENV=development  && webpack-dev-server --progress --colors --hot --config ./webpack.config.js ",
     "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/*spec.js'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "build": "NODE_ENV=production && webpack"
   },
   "keywords": [
     "React",
