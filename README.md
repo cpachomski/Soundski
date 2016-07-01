@@ -1,5 +1,5 @@
 #Soundski
-[go](http://soundski.surge.sh)
+[http://soundski.surge.sh](http://soundski.surge.sh)
 ### NPM Libraries
 *	Babel (es6)
 *	Webpack + webpack-dev-server
